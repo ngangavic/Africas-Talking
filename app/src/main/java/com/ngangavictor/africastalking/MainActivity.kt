@@ -3,7 +3,6 @@ package com.ngangavictor.africastalking
 import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
 import android.text.TextUtils
@@ -25,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var phoneInput: EditText
     private lateinit var amountInput: EditText
     private lateinit var buttonPay: Button
-
     lateinit var alert: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,11 +73,11 @@ class MainActivity : AppCompatActivity() {
                 val response = payment.mobileCheckout(
                     productName, phone, currencyCode, amount.toFloat(), metadata
                 )
-                val jsonObject=JSONObject(response.toString())
-                if (jsonObject.getString("status")=="PendingConfirmation"){
-                    messageAlert("Request Successful","Success")
-                }else{
-                    messageAlert("Request failed","Error")
+                val jsonObject = JSONObject(response.toString())
+                if (jsonObject.getString("status") == "PendingConfirmation") {
+                    messageAlert("Request Successful", "Success")
+                } else {
+                    messageAlert("Request failed", "Error")
                 }
                 println(response.toString())
             } catch (ex: Exception) {
